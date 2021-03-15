@@ -4,22 +4,26 @@ import Article from './Article'
 class Blog extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            isPublished: false,
+            order: 1
+        }
     }
+
+    togglePublished = () => {
+        this.setState({
+            isPublished: !this.state.isPublished
+        })
+    };
+
     render() {
         const authorName = "testname"
         return (
             <>
                 <Article 
                 title={"Reactの使い方"}
-                order={3}
-                isPublished={true}
-                author={authorName}
-                />
-                <Article 
-                title={"jsxの使い方"}
-                order={4}
-                isPublished={true}
-                author={authorName}
+                isPublished={this.state.isPublished}
+                toggle={() => this.togglePublished()}
                 />
             </>
         )
