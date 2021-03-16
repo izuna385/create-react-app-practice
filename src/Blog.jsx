@@ -6,8 +6,12 @@ class Blog extends React.Component {
         super(props);
         this.state = {
             isPublished: false,
-            order: 1
+            count: 0
         }
+    }
+
+    componentDidMount() {
+        document.getElementById('counter').addEventListener('click', this.countUp)
     }
 
     togglePublished = () => {
@@ -15,6 +19,12 @@ class Blog extends React.Component {
             isPublished: !this.state.isPublished
         })
     };
+
+    countUp = () => {
+        this.setState({
+            count: this.state.count + 1
+        })
+    }
 
     render() {
         const authorName = "testname"
@@ -24,6 +34,7 @@ class Blog extends React.Component {
                 title={"Reactの使い方"}
                 isPublished={this.state.isPublished}
                 toggle={() => this.togglePublished()}
+                count={this.state.count}
                 />
             </>
         )
