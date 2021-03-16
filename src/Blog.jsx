@@ -1,54 +1,49 @@
-import React from 'react'
-import Article from './Article'
+import React from 'react';
+import Article from './Article';
 
-class Blog extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isPublished: false,
-            count: 0
-        }
-    }
+import * as FooBar from './components/FooBar';
+import Hoge from './components/Hoge'
 
-    componentDidMount() {
-        document.getElementById('counter').addEventListener('click', this.countUp)
-    }
+const Blog = () => {
 
-    componentDidUpdate() {
-        if (this.state.count>=10){
-            this.setState({count: 0})
-        }
-    }
+    // componentDidMount() {
+    //     document.getElementById('counter').addEventListener('click', this.countUp)
+    // }
 
-    componentWillUnmount() {
-        document.getElementById('counter').removeEventListener('click', this.countUp)
-    }
+    // componentDidUpdate() {
+    //     if (this.state.count>=10){
+    //         this.setState({count: 0})
+    //     }
+    // }
 
-    togglePublished = () => {
-        this.setState({
-            isPublished: !this.state.isPublished
-        })
-    };
+    // componentWillUnmount() {
+    //     document.getElementById('counter').removeEventListener('click', this.countUp)
+    // }
 
-    countUp = () => {
-        this.setState({
-            count: this.state.count + 1
-        })
-    }
+    // togglePublished = () => {
+    //     this.setState({
+    //         isPublished: !this.state.isPublished
+    //     })
+    // };
 
-    render() {
-        const authorName = "testname"
-        return (
-            <>
-                <Article 
-                title={"Reactの使い方"}
-                isPublished={this.state.isPublished}
-                toggle={() => this.togglePublished()}
-                count={this.state.count}
-                />
-            </>
-        )
-    }
+    // countUp = () => {
+    //     this.setState({
+    //         count: this.state.count + 1
+    //     })
+    // }
+
+    return (
+        <>
+            <Article 
+            title={"Reactの使い方"}
+            // count={this.state.count}
+            />
+            <FooBar.Foo />
+            <FooBar.Bar />
+            <Hoge />
+        </>
+    )
+    
 }
 
 export default Blog
