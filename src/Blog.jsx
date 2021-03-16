@@ -20,6 +20,10 @@ class Blog extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        document.getElementById('counter').removeEventListener('click', this.countUp)
+    }
+
     togglePublished = () => {
         this.setState({
             isPublished: !this.state.isPublished
